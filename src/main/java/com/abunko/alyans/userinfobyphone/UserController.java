@@ -1,7 +1,6 @@
 package com.abunko.alyans.userinfobyphone;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.apache.log4j.Logger;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -10,7 +9,10 @@ import java.sql.SQLException;
 
 @RestController()
 public class UserController {
-    public static final Log LOG = LogFactory.getLog(UserController.class);
+    public static final Logger LOG = Logger.getLogger(UserController.class);
+    static {
+        SystemOutToLog4j.enableForClass(UserController.class);
+    }
 
     private UserDao userDao = new UserDao();
 
